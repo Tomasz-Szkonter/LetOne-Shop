@@ -1,0 +1,30 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  min: $spacer * .1,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+);
+
+@import "../../../node_modules/bootstrap/scss/maps";
+@import "../../../node_modules/bootstrap/scss/mixins";
+@import "../../../node_modules/bootstrap/scss/utilities";
+
+$utilities: (
+  "min-viewport-height": (
+    property: min-height,
+    class: min-vh,
+    values: (
+      100: 100vh,
+      80: 80vh,
+    )
+  )
+);
+
+@import "../../../node_modules/bootstrap/scss/utilities/api";

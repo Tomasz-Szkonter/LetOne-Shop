@@ -1,5 +1,8 @@
 // Import custom Bootstrap theme variables
 @import './theme-variables';
 
+// Import custom Bootstrap theme variables
+@import './utilities';
+
 // Import the Bootstrap core 
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
