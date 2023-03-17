@@ -4,7 +4,7 @@ import { Col, Row } from 'react-bootstrap';
 import Product from '../components/Product';
 import Message from '../components/utility/Message';
 import Loader from '../components/utility/Loader';
-import { listProducts } from '../actions/productAction';
+import { listProducts } from '../actions/productActions';
 
 const HomeScreen = () => {
   const dispatch = useDispatch();
