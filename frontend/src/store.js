@@ -4,10 +4,13 @@ import {
   productListReducer,
 } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
-import { userLoginReducer } from './reducers/userReducers';
-import { userRegisterReducer } from './reducers/userReducers';
-import { userDetailsReducer } from './reducers/userReducers';
-import { userUpdateProfileReducer } from './reducers/userReducers';
+import {
+  userDetailsReducer,
+  userUpdateProfileReducer,
+  userRegisterReducer,
+  userLoginReducer,
+} from './reducers/userReducers';
+import { orderCreateReducer } from './reducers/orderReducers';
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
   ? JSON.parse(localStorage.getItem('cartItems'))
@@ -30,6 +33,7 @@ const store = configureStore({
     userRegister: userRegisterReducer,
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
+    orderCreate: orderCreateReducer,
   },
   preloadedState: {
     cart: {
