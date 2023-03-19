@@ -12,25 +12,24 @@ const PlaceOrderScreen = () => {
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
-  const orderCart = {};
 
-  // Calculate prices
+  //   Calculate prices
   const addDecimals = (num) => {
-    return (Math.round(num * 100) / 100).toFixed(2);
+    return Number((Math.round(num * 100) / 100).toFixed(2));
   };
 
-  orderCart.itemsPrice = addDecimals(
-    orderCart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+  cart.itemsPrice = addDecimals(
+    cart.cartItems.reduce(
+      (accumulator, item) => accumulator + item.price * item.qty,
+      0
+    )
   );
-  orderCart.shippingPrice = addDecimals(orderCart.itemsPrice > 100 ? 0 : 10);
-  orderCart.taxPrice = addDecimals(
-    Number((0.15 * orderCart.itemsPrice).toFixed(2))
+  cart.shippingPrice = Number(addDecimals(cart.itemsPrice > 100 ? 0 : 10));
+  cart.taxPrice = Number(addDecimals(0.15 * cart.itemsPrice).toFixed(2));
+
+  cart.totalPrice = Number(
+    (cart.itemsPrice + cart.shippingPrice + cart.taxPrice).toFixed(2)
   );
-  orderCart.totalPrice = (
-    Number(orderCart.itemsPrice) +
-    Number(orderCart.shippingPrice) +
-    Number(orderCart.taxPrice)
-  ).toFixed(2);
 
   const orderCreate = useSelector((state) => state.orderCreate);
   const { order, success, error } = orderCreate;
@@ -50,10 +49,10 @@ const PlaceOrderScreen = () => {
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
-        itemsPrice: orderCart.itemsPrice,
-        shippingPrice: orderCart.shippingPrice,
-        taxPrice: orderCart.taxPrice,
-        totalPrice: orderCart.totalPrice,
+        itemsPrice: cart.itemsPrice,
+        shippingPrice: cart.shippingPrice,
+        taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
       })
     );
   };
@@ -126,25 +125,25 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${orderCart.itemsPrice}</Col>
+                  <Col>${cart.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>${orderCart.shippingPrice}</Col>
+                  <Col>${cart.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${orderCart.taxPrice}</Col>
+                  <Col>${cart.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total</Col>
-                  <Col>${orderCart.totalPrice}</Col>
+                  <Col>${cart.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

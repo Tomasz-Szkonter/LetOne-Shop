@@ -1,6 +1,11 @@
 @import './scss/custom.scss';
 // Import the Bootstrap core 
-
+div#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
 .alert-danger {
   color: #842029;
   background-color: #f8d7da;
@@ -11,3 +16,10 @@
   background-color: #d1e7dd;
   border-color: #badbcc;
 }
+footer {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #2ECC71;
+}
+
