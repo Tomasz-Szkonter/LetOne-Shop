@@ -47,6 +47,28 @@ const NavMain = () => {
                 </Nav.Link>
               </LinkContainer>
             )}
+            {userInfo && userInfo.isAdmin && (
+              <NavDropdown title="Admin" id="adminmenu">
+                <NavDropdown.Item>
+                  <LinkContainer to="/admin/userlist">
+                    <span>Users</span>
+                  </LinkContainer>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <LinkContainer to="/admin/productlist">
+                    <span>Products</span>
+                  </LinkContainer>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <LinkContainer to="/admin/orderlist">
+                    <span>Orders</span>
+                  </LinkContainer>
+                </NavDropdown.Item>
+                <NavDropdown.Item onClick={logoutHandler}>
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
